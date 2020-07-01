@@ -5,7 +5,7 @@ This is the solution to the Akka actor voting exercise in the course "Akka Essen
 
 2. Vote aggregator: the vote aggregator is responsible for aggregating the voting choices of multiple voters and for printing the results when prompted by the main thread.
 
-Both the voters and the vote aggregator are implemented as fully stateless and immutable Akka actors. Instead of using mutable state variables, the "states" of the actors (selected candidate in the case of voters; vote count and voter list in the case the vote aggregator) are persisted through the use of behavior changes and state parameters that are passed between behavior partial functions. 
+Both the voters and the vote aggregator are implemented as fully stateless and immutable Akka actors. Instead of using mutable state variables, the "states" of the actors (selected candidate in the case of voters; vote count and voter list in the case the vote aggregator) are persisted through the use of behavior changes and state parameters that are passed between behavior partial functions. The behaviors of the actors are broken down into small partial functions to keep the communication logic between the actors simple and intuitive. 
 
 The main thread, the voters, and the vote aggregator communicate by sending asynchronous and non-blocking messages. The main steps in the program are:
 
